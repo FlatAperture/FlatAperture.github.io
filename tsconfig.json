@@ -9,6 +9,7 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
+    "removeComments": true,
 
     // Strict Mode
     "strict": true,
