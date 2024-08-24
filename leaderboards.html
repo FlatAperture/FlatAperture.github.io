@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Leaderboards - Portal 0.5</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="portal 0.5, portal 0,5, portal 0.5 official, portal 0,5 official, portal 05, portal 05 official, portal 2D"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/template.css" />
+  </head>
+
+  <div id="main">
+    <div id="default-header">Leaderboards</div>
+    <div id="content_header"></div>
+    <div id="default-site-content">
+      <!--  -->
+      <select name="leaderboard-category" id="leaderboard-category">
+        <option value="anyPercent">any%</option>
+        <option selected="selected" value="backspacePercent">backspace%</option>
+        <option value="glitchless">glitchless</option>
+      </select>
+      <select
+        class="select"
+        name="leaderboard-version"
+        id="leaderboard-version"
+      >
+        <option selected="selected" value="1.0.0">1.0.0</option>
+        <option value="1.0.1">1.0.1</option>
+      </select>
+      <table id="leaderboards">
+        <tr>
+          <th>Leaderboards Loading...</th>
+        </tr>
+      </table>
+      <!--  -->
+    </div>
+    <div id="content_footer"></div>
+    <div id="default-footer"></div>
+  </div>
+  <body>
+    <script src="./dist/out.js"></script>
+  </body>
+</html>

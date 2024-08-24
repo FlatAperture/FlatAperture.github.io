@@ -1,17 +1,10 @@
-enum PageName {
-  Home,
-  Examples,
-  AnotherPage,
-  Contact,
-}
 const defaultHeader = (data: { page: PageName }) => {
   let homeSelected = "";
-  let examplesSelected = "";
-  let anotherPageSelected = "";
+  let leaderboardsSelected = "";
   let contactUsSelected = "";
   if (data.page == PageName.Home) homeSelected = "class=selected";
-  if (data.page == PageName.Examples) examplesSelected = "class=selected";
-  if (data.page == PageName.AnotherPage) anotherPageSelected = "class=selected";
+  if (data.page == PageName.Leaderboards)
+    leaderboardsSelected = "class=selected";
   if (data.page == PageName.Contact) contactUsSelected = "class=selected";
   return `
 <div id=header>
@@ -27,8 +20,7 @@ const defaultHeader = (data: { page: PageName }) => {
   <div id=menubar>
     <ul id=menu>
       <li ${homeSelected} ><a href=index.html>Home</a>
-      <li ${examplesSelected} ><a href=examples.html>Examples</a>
-      <li ${anotherPageSelected} ><a href=another_page.html>Another Page</a>
+      <li ${leaderboardsSelected} ><a href=leaderboards.html>Speedrun Leaderboards</a>
       <li ${contactUsSelected} ><a href=contact.html>Contact Us</a>
     </ul>
   </div>
@@ -85,7 +77,60 @@ const defaultSiteContent = (data: {
 const defaultFooter = (data: {}) =>
   `
 <div id=footer>
-  <p><a href=index.html>Home</a> | <a href=examples.html>Examples</a> | <a href=page.html>A Page</a> | <a href=another_page.html>Another Page</a> | <a href=contact.html>Contact Us</a>
+  <p><a href=index.html>Home</a> | <a href=page.html>A Page</a> | <a href=leaderboards.html>Leaderboards</a> | <a href=contact.html>Contact Us</a>
   <p><a href=http://www.html5sbtemplates.co.uk>design from HTML5webtemplates.co.uk</a>
 </div>
 `.trim();
+
+function getLeaderBoards(category: Category, version: string) {
+  let currentLeaderboards: {
+    [key in string]: {
+      time: string;
+      name: string;
+    }[];
+  };
+  if (category == Category.AnyPercent) {
+    currentLeaderboards = anyPercent;
+  }
+  if (category == Category.BackspacePercent) {
+    currentLeaderboards = backspacePercent;
+  }
+  if (category == Category.Glitchless) {
+    currentLeaderboards = glitchless;
+  }
+  let trRuns = "";
+  console.log(version);
+  Object.keys(currentLeaderboards).forEach((_version) => {
+    let i = 1;
+    currentLeaderboards[_version].forEach((run) => {
+      if (_version == version) {
+        trRuns += `
+        <tr>
+        <td>${i}</td>
+        <td>${run.time}</td>
+  <td>${run.name}</td>
+  <td>${playerData[run.name].country}</td>
+</tr>`;
+        i++;
+      }
+    });
+  });
+  console.log(
+    `
+<tr>
+  <th>Place</th>
+  <th>Time</th>
+  <th>Name</th>
+  <th>Country</th>
+</tr>` + trRuns
+  );
+  return (
+    `
+<tr>
+  <th>Place</th>
+  <th>Time</th>
+  <th>Name</th>
+  <th>Country</th>
+</tr>` + trRuns
+  );
+}

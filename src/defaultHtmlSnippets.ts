@@ -15,6 +15,17 @@ function replaceHtmlSnippets() {
     })
   );
   replaceHtmlSnippet("default-footer", defaultFooter({}));
+  onLeaderboardOptionChange();
+}
+function onLeaderboardOptionChange() {
+  document.getElementById("leaderboards").innerHTML = getLeaderBoards(
+    Category[
+      capitalize(
+        (document.getElementById("leaderboard-category") as any).value as string
+      )
+    ],
+    (document.getElementById("leaderboard-version") as any).value as string
+  );
 }
 
 function replaceHtmlSnippet(elementId: string, html: string) {

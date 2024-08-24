@@ -140,7 +140,7 @@ ol li {
 }
 
 #banner {
-  background: transparent url(banner.jpg) no-repeat;
+  background: transparent url(../assets/template/banner.jpg) no-repeat;
   width: 860px;
   height: 180px;
   margin-bottom: 20px;
@@ -258,13 +258,13 @@ ul#menu li a:hover {
 .sidebar_top {
   width: 222px;
   height: 14px;
-  background: transparent url(side_top.png) no-repeat;
+  background: transparent url(../assets/template/side_top.png) no-repeat;
 }
 
 .sidebar_base {
   width: 222px;
   height: 14px;
-  background: url(side_base.png) no-repeat;
+  background: url(../assets/template/side_base.png) no-repeat;
 }
 
 .sidebar {
@@ -275,7 +275,7 @@ ul#menu li a:hover {
 }
 
 .sidebar_item {
-  background: url(side_back.png) repeat-y;
+  background: url(../assets/template/side_back.png) repeat-y;
   padding: 0 15px;
   width: 192px;
 }
@@ -302,7 +302,7 @@ ul#menu li a:hover {
 #content ul li,
 .sidebar ul li {
   list-style-type: none;
-  background: url(bullet.png) no-repeat;
+  background: url(../assets/template/bullet.png) no-repeat;
   margin: 0 0 0 0;
   padding: 0 0 4px 25px;
   line-height: 1.5em;
