@@ -71,14 +71,16 @@ const defaultSiteContent = (data: {
       <div class=sidebar_base></div>
     </div>
   </div>
+  <div id="content">
   ${data.content}
+  </div>
 </div>
 `.trim();
 const defaultFooter = (data: {}) =>
   `
 <div id=footer>
   <p><a href=index.html>Home</a> | <a href=page.html>A Page</a> | <a href=leaderboards.html>Leaderboards</a> | <a href=contact.html>Contact Us</a>
-  <p><a href=http://www.html5sbtemplates.co.uk>design from HTML5webtemplates.co.uk</a>
+  <p><a href=http://www.html5webtemplates.co.uk>design from HTML5webtemplates.co.uk</a>
 </div>
 `.trim();
 
