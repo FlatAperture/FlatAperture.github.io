@@ -177,11 +177,11 @@ ol li {
   text-decoration: none;
 }
 
-#logo_text h1 a .logo_colour {
+#logo_text h1 a .logo_color {
   color: #00c6f0;
 }
 
-#logo_text a:hover .logo_colour {
+#logo_text a:hover .logo_color {
   color: #ddd;
 }
 
