@@ -30,7 +30,7 @@ const defaultSiteContentHtml = (a: string, b: string, c: string, d: string) => `
         <h3>Latest Updates</h3>
         <h4>${a}</h4>
         <h5>${b}</h5>
-        <p>${c}<br><a href=#>Read more</a>
+        <p>${c}<br><a href=downloads.html>Read more</a>
       </div>
       <div class=sidebar_base></div>
     </div>
