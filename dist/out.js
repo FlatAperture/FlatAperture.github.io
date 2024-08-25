@@ -1,3 +1,4 @@
+var _a;
 var PageName;
 (function (PageName) {
     PageName[PageName["Home"] = 0] = "Home";
@@ -24,6 +25,12 @@ var backspacePercent = {
         { time: "2m 23s 560ms", name: "Quintos" },
     ],
 };
+var standardRules = "\n  <h2>Rules</h2>\n  <h3>Goal</h3>\n  <p>\n    Beat the game without scripts, macros or cheats.\n    This has to be done in one sitting,\n    loading any saves or quicksaves is not allowed.\n  </p><hr>\n  <h3>Timing</h3>\n  <p>\n    Timing begins when the level appears\n    and ends when the last level has been completed (depending on the game version)\n    PC timing is done using Realtime.\n  </p><hr>\n  <h3>Proof and submitting</h3>\n  <p>\n  All runs HAVE to be submitted with some sort of proof in form of a video.\n  Videos have to show the full run from start to finish.\n  Video must be hosted on a permanent video platform,\n  such as Youtube, or a Twitch Highlight.\n  Temporary platforms such as Streamable or your Twitch VOD are not acceptable.\n  The video has to show Livesplit comparing against Realtime throughout the\n  entire run. Game audio is not required, but this may change in the future.\n  </p><hr>\n  <h3>Settings</h3>\n  <p>\n  A list of allowed settings can be found here:\n  </p>\n  <ul>\n  <li>Player TPS</li>\n  <li>Resolution</li>\n  <li>Sound</li>\n  <li>Anti-Aliasing</li>\n  <li>Sensitivity</li>\n  </ul>\n  <p>\n  All other settings are not allowed in runs,\n  unless stated in the categories rules separately.\n  </p><hr>\n  <h3>Misc Rules</h3>\n  <p>\n  Developer binds such as\n  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Enter</kbd>\n  or <kbd>Backspace</kbd> are not allowed,\n  unless stated in the categories rules separately.\n  </p>\n  <hr>\n  ";
+var rules = (_a = {},
+    _a[Category.AnyPercent] = "\n  ".concat(standardRules, "\n  <h3>Category Specific Rules</h3>\n  <p>\n  Every setting in the settings tab may be changed during or before the run.\n  Including changing speeds. The developer bind <kbd>Backspace</kbd> is allowed,\n  but <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Enter</kbd> is NOT allowed.\n  </p>\n  "),
+    _a[Category.BackspacePercent] = "\n  ".concat(standardRules, "\n  <h3>Category Specific Rules</h3>\n  <p>\n  The developer bind <kbd>Backspace</kbd> is allowed,\n  but <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Enter</kbd> is NOT allowed.\n  </p>\n  "),
+    _a[Category.Glitchless] = "\n  ".concat(standardRules, "\n  <h3>Category Specific Rules</h3>\n  <p>\n  The game must be completed without exploiting any glitches, bugs or other unintended side-effects.\n  </p>\n  "),
+    _a);
 function replaceHtmlSnippets() {
     replaceHtmlSnippet("default-header", defaultHeader({
         page: PageName[document.getElementById("default-header").innerHTML],
@@ -80,6 +87,7 @@ var defaultSiteContent = function (data) {
 var defaultFooter = function (data) { return defaultFooterHtml().trim(); };
 function getLeaderBoards(category, version) {
     var currentLeaderboards;
+    document.getElementById("category-info").innerHTML = rules[category];
     if (category == Category.AnyPercent) {
         currentLeaderboards = anyPercent;
     }

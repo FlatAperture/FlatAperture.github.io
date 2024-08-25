@@ -37,6 +37,7 @@ function getLeaderBoards(category: Category, version: string) {
       name: string;
     }[];
   };
+  document.getElementById("category-info").innerHTML = rules[category];
   if (category == Category.AnyPercent) {
     currentLeaderboards = anyPercent;
   }
