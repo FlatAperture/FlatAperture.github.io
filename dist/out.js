@@ -1,7 +1,7 @@
 var PageName;
 (function (PageName) {
     PageName[PageName["Home"] = 0] = "Home";
-    PageName[PageName["Examples"] = 1] = "Examples";
+    PageName[PageName["Downloads"] = 1] = "Downloads";
     PageName[PageName["Leaderboards"] = 2] = "Leaderboards";
     PageName[PageName["Contact"] = 3] = "Contact";
 })(PageName || (PageName = {}));
@@ -24,49 +24,6 @@ var backspacePercent = {
         { time: "2m 23s 560ms", name: "Quintos" },
     ],
 };
-var defaultHeader = function (data) {
-    var homeSelected = "";
-    var leaderboardsSelected = "";
-    var contactUsSelected = "";
-    if (data.page == PageName.Home)
-        homeSelected = "class=selected";
-    if (data.page == PageName.Leaderboards)
-        leaderboardsSelected = "class=selected";
-    if (data.page == PageName.Contact)
-        contactUsSelected = "class=selected";
-    return "\n<div id=header>\n  <div id=logo>\n    <div id=logo_text>\n      <h1>\n        <a href=index.html>\n        Portal<span class=logo_color>0.5</span></a>\n      </h1>\n      <h2>Official Portal 0.5 Website.</h2>\n    </div>\n  </div>\n  <div id=menubar>\n    <ul id=menu>\n      <li ".concat(homeSelected, " ><a href=index.html>Home</a>\n      <li ").concat(leaderboardsSelected, " ><a href=leaderboards.html>Speedrun Leaderboards</a>\n      <li ").concat(contactUsSelected, " ><a href=contact.html>Contact Us</a>\n    </ul>\n  </div>\n</div>\n").trim();
-};
-var defaultSiteContent = function (data) {
-    return "\n<div id=site-content>\n  <div id=banner></div>\n  <div id=sidebar_container>\n    <div class=sidebar>\n      <div class=sidebar_top></div>\n      <div class=sidebar_item>\n        <h3>Latest Updates</h3>\n        <h4>".concat(data.latestUpdateVersion, "</h4>\n        <h5>").concat(data.latestUpdateDate, "</h5>\n        <p>").concat(data.latestUpdateDescription, "<br><a href=#>Read more</a>\n      </div>\n      <div class=sidebar_base></div>\n    </div>\n    <div class=sidebar>\n      <div class=sidebar_top></div>\n      <div class=sidebar_item>\n        <h3>Useful Links</h3>\n        <ul>\n          <li><a href=#>link 1</a>\n          <li><a href=#>link 2</a>\n          <li><a href=#>link 3</a>\n          <li><a href=#>link 4</a>\n        </ul>\n      </div>\n      <div class=sidebar_base></div>\n    </div>\n    <div class=sidebar>\n      <div class=sidebar_top></div>\n      <div class=sidebar_item>\n        <h3>Search</h3>\n        <form action=# id=search_form method=post>\n          <p><input name=search_field class=search value=\"Enter keywords.....\"> <input name=search alt=Search src=assets/template/search.png style=\"border:0;margin:0 0 -9px 5px\"title=Search type=image>\n        </form>\n      </div>\n      <div class=sidebar_base></div>\n    </div>\n  </div>\n  <div id=\"content\">\n  ").concat(data.content, "\n  </div>\n</div>\n").trim();
-};
-var defaultFooter = function (data) {
-    return "\n<div id=footer>\n  <p><a href=index.html>Home</a> | <a href=page.html>A Page</a> | <a href=leaderboards.html>Leaderboards</a> | <a href=contact.html>Contact Us</a>\n  <p><a href=http://www.html5webtemplates.co.uk>design from HTML5webtemplates.co.uk</a>\n</div>\n".trim();
-};
-function getLeaderBoards(category, version) {
-    var currentLeaderboards;
-    if (category == Category.AnyPercent) {
-        currentLeaderboards = anyPercent;
-    }
-    if (category == Category.BackspacePercent) {
-        currentLeaderboards = backspacePercent;
-    }
-    if (category == Category.Glitchless) {
-        currentLeaderboards = glitchless;
-    }
-    var trRuns = "";
-    console.log(version);
-    Object.keys(currentLeaderboards).forEach(function (_version) {
-        var i = 1;
-        currentLeaderboards[_version].forEach(function (run) {
-            if (_version == version) {
-                trRuns += "\n        <tr>\n        <td>".concat(i, "</td>\n        <td>").concat(run.time, "</td>\n  <td>").concat(run.name, "</td>\n  <td>").concat(playerData[run.name].country, "</td>\n</tr>");
-                i++;
-            }
-        });
-    });
-    console.log("\n<tr>\n  <th>Place</th>\n  <th>Time</th>\n  <th>Name</th>\n  <th>Country</th>\n</tr>" + trRuns);
-    return ("\n<tr>\n  <th>Place</th>\n  <th>Time</th>\n  <th>Name</th>\n  <th>Country</th>\n</tr>" + trRuns);
-}
 function replaceHtmlSnippets() {
     replaceHtmlSnippet("default-header", defaultHeader({
         page: PageName[document.getElementById("default-header").innerHTML],
@@ -102,9 +59,55 @@ function htmlToNode(html) {
     }
     return template.content.firstChild;
 }
+var defaultHeader = function (data) {
+    var homeSelected = "";
+    var leaderboardsSelected = "";
+    var downloadsSelected = "";
+    var contactUsSelected = "";
+    if (data.page == PageName.Home)
+        homeSelected = "class=selected";
+    if (data.page == PageName.Leaderboards)
+        leaderboardsSelected = "class=selected";
+    if (data.page == PageName.Downloads)
+        downloadsSelected = "class=selected";
+    if (data.page == PageName.Contact)
+        contactUsSelected = "class=selected";
+    return defaultHeaderString(homeSelected, leaderboardsSelected, downloadsSelected, contactUsSelected).trim();
+};
+var defaultSiteContent = function (data) {
+    return defaultSiteContentHtml(data.latestUpdateVersion, data.latestUpdateDate, data.latestUpdateDescription, data.content).trim();
+};
+var defaultFooter = function (data) { return defaultFooterHtml().trim(); };
+function getLeaderBoards(category, version) {
+    var currentLeaderboards;
+    if (category == Category.AnyPercent) {
+        currentLeaderboards = anyPercent;
+    }
+    if (category == Category.BackspacePercent) {
+        currentLeaderboards = backspacePercent;
+    }
+    if (category == Category.Glitchless) {
+        currentLeaderboards = glitchless;
+    }
+    var trRuns = "";
+    console.log(version);
+    Object.keys(currentLeaderboards).forEach(function (_version) {
+        var i = 1;
+        currentLeaderboards[_version].forEach(function (run) {
+            if (_version == version) {
+                trRuns += "\n        <tr>\n        <td>".concat(i, "</td>\n        <td>").concat(run.time, "</td>\n  <td>").concat(run.name, "</td>\n  <td>").concat(playerData[run.name].country, "</td>\n</tr>");
+                i++;
+            }
+        });
+    });
+    return ("\n<tr>\n  <th>Place</th>\n  <th>Time</th>\n  <th>Name</th>\n  <th>Country</th>\n</tr>" + trRuns);
+}
 var capitalize = function (s) {
     return (s[0].toUpperCase() + s.slice(1));
 };
+var defaultHeaderString = function (a, b, c, d) { return "\n<div id=header>\n  <div id=logo>\n    <div id=logo_text>\n      <h1>\n        <a href=index.html>\n        Portal<span class=logo_color>0.5</span></a>\n      </h1>\n      <h2>Official Portal 0.5 Website.</h2>\n    </div>\n  </div>\n  <div id=menubar>\n    <ul id=menu>\n      <li ".concat(a, " ><a href=index.html>Home</a>\n      <li ").concat(b, " ><a href=leaderboards.html>Speedrun Leaderboards</a>\n      <li ").concat(c, " ><a href=downloads.html>Downloads</a>\n      <li ").concat(d, " ><a href=contact.html>Contact Us</a>\n    </ul>\n  </div>\n</div>\n"); };
+var defaultSiteContentHtml = function (a, b, c, d) { return "\n<div id=site-content>\n  <div id=banner></div>\n  <div id=sidebar_container>\n    <div class=sidebar>\n      <div class=sidebar_top></div>\n      <div class=sidebar_item>\n        <h3>Latest Updates</h3>\n        <h4>".concat(a, "</h4>\n        <h5>").concat(b, "</h5>\n        <p>").concat(c, "<br><a href=#>Read more</a>\n      </div>\n      <div class=sidebar_base></div>\n    </div>\n    <div class=sidebar>\n      <div class=sidebar_top></div>\n      <div class=sidebar_item>\n        <h3>Useful Links</h3>\n        <ul>\n          <li><a href=#>link 1</a>\n          <li><a href=#>link 2</a>\n          <li><a href=#>link 3</a>\n          <li><a href=#>link 4</a>\n        </ul>\n      </div>\n      <div class=sidebar_base></div>\n    </div>\n    <div class=sidebar>\n      <div class=sidebar_top></div>\n      <div class=sidebar_item>\n        <h3>Search</h3>\n        <form action=# id=search_form method=post>\n          <p><input name=search_field class=search value=\"Enter keywords.....\"> <input name=search alt=Search src=assets/template/search.png style=\"border:0;margin:0 0 -9px 5px\"title=Search type=image>\n        </form>\n      </div>\n      <div class=sidebar_base></div>\n    </div>\n  </div>\n  <div id=\"content\">\n  ").concat(d, "\n  </div>\n</div>\n"); };
+var defaultFooterHtml = function () { return "\n<div id=footer>\n  <p><a href=index.html>Home</a> | <a href=downloads.html>Downloads</a> | <a href=leaderboards.html>Speedrun Leaderboards</a> | <a href=contact.html>Contact Us</a>\n  <p><a href=http://www.html5webtemplates.co.uk>design from HTML5webtemplates.co.uk</a>\n</div>\n"; };
 console.log("Main Typescript Entrypoint Found");
 replaceHtmlSnippets();
 document.getElementById("leaderboard-category").onchange =

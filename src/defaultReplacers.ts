@@ -1,14 +1,17 @@
 const defaultHeader = (data: { page: PageName }) => {
   let homeSelected = "";
   let leaderboardsSelected = "";
+  let downloadsSelected = "";
   let contactUsSelected = "";
   if (data.page == PageName.Home) homeSelected = "class=selected";
   if (data.page == PageName.Leaderboards)
     leaderboardsSelected = "class=selected";
+  if (data.page == PageName.Downloads) downloadsSelected = "class=selected";
   if (data.page == PageName.Contact) contactUsSelected = "class=selected";
   return defaultHeaderString(
     homeSelected,
     leaderboardsSelected,
+    downloadsSelected,
     contactUsSelected
   ).trim();
 };

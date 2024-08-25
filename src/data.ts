@@ -1,6 +1,6 @@
 enum PageName {
   Home,
-  Examples,
+  Downloads,
   Leaderboards,
   Contact,
 }

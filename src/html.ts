@@ -1,4 +1,4 @@
-const defaultHeaderString = (a: string, b: string, c: string) => `
+const defaultHeaderString = (a: string, b: string, c: string, d: string) => `
 <div id=header>
   <div id=logo>
     <div id=logo_text>
@@ -13,7 +13,8 @@ const defaultHeaderString = (a: string, b: string, c: string) => `
     <ul id=menu>
       <li ${a} ><a href=index.html>Home</a>
       <li ${b} ><a href=leaderboards.html>Speedrun Leaderboards</a>
-      <li ${c} ><a href=contact.html>Contact Us</a>
+      <li ${c} ><a href=downloads.html>Downloads</a>
+      <li ${d} ><a href=contact.html>Contact Us</a>
     </ul>
   </div>
 </div>
@@ -65,7 +66,7 @@ const defaultSiteContentHtml = (a: string, b: string, c: string, d: string) => `
 
 const defaultFooterHtml = () => `
 <div id=footer>
-  <p><a href=index.html>Home</a> | <a href=page.html>A Page</a> | <a href=leaderboards.html>Leaderboards</a> | <a href=contact.html>Contact Us</a>
+  <p><a href=index.html>Home</a> | <a href=downloads.html>Downloads</a> | <a href=leaderboards.html>Speedrun Leaderboards</a> | <a href=contact.html>Contact Us</a>
   <p><a href=http://www.html5webtemplates.co.uk>design from HTML5webtemplates.co.uk</a>
 </div>
 `;
