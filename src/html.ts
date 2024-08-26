@@ -4,9 +4,9 @@ const defaultHeaderString = (a: string, b: string, c: string, d: string) => `
     <div id=logo_text>
       <h1>
         <a href=index.html>
-        Portal<span class=logo_color>0.5</span></a>
+        Flat<span class=logo_color>Aperture</span></a>
       </h1>
-      <h2>Official Portal 0.5 Website.</h2>
+      <h2>Official Flat Aperture Website.</h2>
     </div>
   </div>
   <div id=menubar>

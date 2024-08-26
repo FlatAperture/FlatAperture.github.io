@@ -2,18 +2,18 @@ enum PageName {
   Home,
   Downloads,
   Leaderboards,
-  Contact,
+  Contact
 }
 enum Category {
   AnyPercent,
   BackspacePercent,
-  Glitchless,
+  Glitchless
 }
 
 const playerData: { [username in string]: { country: string } } = {
   Quintos: {
-    country: "Netherlands",
-  },
+    country: "Netherlands"
+  }
 };
 
 type CategoryRun = {
@@ -22,10 +22,10 @@ type CategoryRun = {
 let anyPercent: CategoryRun = {};
 let glitchless: CategoryRun = {};
 let backspacePercent: CategoryRun = {
-  "1.0.0": [
+  "0.0.1": [
     { time: "1m 59s 420ms", name: "Quintos" },
-    { time: "2m 23s 560ms", name: "Quintos" },
-  ],
+    { time: "2m 23s 560ms", name: "Quintos" }
+  ]
 };
 
 const standardRules = `
@@ -101,7 +101,7 @@ const rules = {
   <p>
   The game must be completed without exploiting any glitches, bugs or other unintended side-effects.
   </p>
-  `,
+  `
 };
 
 interface IPerson {
